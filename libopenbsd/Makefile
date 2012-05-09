@@ -1,3 +1,5 @@
+include ../config.mk 
+
 CFLAGS += -I./include
 LIB  =	libopenbsd.a
 

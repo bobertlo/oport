@@ -12,3 +12,6 @@ ${LIB}: ${OBJS}
 
 clean:
 	rm -f ${CLEANFILES}
+
+install:
+	install -D -m 755 ${LIB} ${DESTDIR}${LIBDIR}

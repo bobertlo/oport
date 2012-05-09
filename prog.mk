@@ -16,3 +16,6 @@ ${PROG}: ${OBJS}
 
 clean:
 	rm -f ${CLEANFILES}
+
+install:
+	install -D ${PROG} ${DESTDIR}${BINDIR}
