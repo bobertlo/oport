@@ -11,8 +11,10 @@
 #
 # To bootstrap lex, cp initscan.c to scan.c and run make.
 
+include ../config.mk
+
 PROG=	lex
-CFLAGS+=-I. -I${.CURDIR}
+CFLAGS+=-I. -I.
 SRCS=	ccl.c dfa.c ecs.c gen.c main.c misc.c nfa.c parse.c sym.c tblcmp.c \
 	yylex.c
 OBJS+=	scan.o skel.o
@@ -26,16 +28,18 @@ LINKS=	${BINDIR}/lex ${BINDIR}/flex \
 	${BINDIR}/lex ${BINDIR}/flex++
 MLINKS=	flex.1 lex.1 flex.1 flex++.1
 
+include ../prog.mk
+
 parse.h parse.c: parse.y
-	${YACC} -d ${.ALLSRC}
+	${YACC} -d parse.y
 	mv y.tab.c parse.c
 	mv y.tab.h parse.h
 
 skel.c:	flex.skl mkskel.sh
-	sh ${.CURDIR}/mkskel.sh ${.CURDIR}/flex.skl > skel.c
+	sh ./mkskel.sh ./flex.skl > skel.c
 
 scan.c: scan.l
-	flex -t -p ${.CURDIR}/scan.l > scan.c
+	flex -t -p ./scan.l > scan.c
 
 scan.o: parse.c
 
@@ -43,4 +47,3 @@ includes:
 	${INSTALL} ${INSTALL_COPY} -o ${BINOWN} -g ${BINGRP} -m 444 \
 		${.CURDIR}/FlexLexer.h ${DESTDIR}/usr/include/g++
 
-.include <bsd.prog.mk>

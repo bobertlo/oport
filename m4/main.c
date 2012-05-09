@@ -56,6 +56,7 @@
 #include "extern.h"
 #include "pathnames.h"
 
+const char *__progname;
 stae *mstack;			/* stack of m4 machine         */
 char *sstack;			/* shadow stack, for string space extension */
 static size_t STACKMAX;		/* current maximum size of stack */
@@ -171,6 +172,8 @@ main(int argc, char *argv[])
 	int c;
 	int n;
 	char *p;
+
+	__progname=argv[0];
 
 	if (signal(SIGINT, SIG_IGN) != SIG_IGN)
 		signal(SIGINT, onintr);

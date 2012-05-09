@@ -2,7 +2,7 @@ CFLAGS += -D_GNU_SOURCE -I../libopenbsd/include
 LDFLAGS += -L../libopenbsd -lopenbsd
 
 OBJS += ${SRCS:.c=.o}
-CLEANFILES += ${OBJS}
+CLEANFILES += ${OBJS} ${PROG}
 
 all: ${PROG}
 

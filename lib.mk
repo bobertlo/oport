@@ -1,4 +1,5 @@
 OBJS += ${SRCS:.c=.o}
+CLEANFILES += ${OBJS} ${LIB}
 
 all: ${LIB}
 
@@ -7,7 +8,7 @@ ${LIB}: ${OBJS}
 	ranlib ${LIB}
 
 .o:
-	${CC} -c ${CFLAGS} 
+	${CC} -c ${CFLAGS} $<
 
 clean:
-	rm -f ${OBJS} ${LIB}
+	rm -f ${CLEANFILES}
