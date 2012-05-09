@@ -11,8 +11,8 @@ all: ${PROG}
 ${PROG}: ${OBJS}
 	${CC} -o ${PROG} ${OBJS} ${LDFLAGS}
 
-.o:
-	${CC} -c ${CFLAGS} $<
+%.o: %.c
+	${CC} -c ${CFLAGS} -o $@ $<
 
 clean:
 	rm -f ${CLEANFILES}

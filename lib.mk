@@ -7,8 +7,8 @@ ${LIB}: ${OBJS}
 	ar cr ${LIB} ${OBJS}
 	ranlib ${LIB}
 
-.o:
-	${CC} -c ${CFLAGS} $<
+%.o: %.c
+	${CC} -c ${CFLAGS} -o $@ $<
 
 clean:
 	rm -f ${CLEANFILES}
