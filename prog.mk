@@ -1,4 +1,4 @@
-CFLAGS += -D_GNU_SOURCE -I../libopenbsd/include
+CFLAGS += -I../libopenbsd/include
 LDFLAGS += -L../libopenbsd -lopenbsd
 
 OBJS += ${SRCS:.c=.o}
