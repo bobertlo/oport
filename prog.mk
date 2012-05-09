@@ -4,6 +4,8 @@ LDFLAGS += -L../libopenbsd -lopenbsd
 OBJS += ${SRCS:.c=.o}
 CLEANFILES += ${OBJS} ${PROG}
 
+YACC=../yacc/yacc
+
 all: ${PROG}
 
 ${PROG}: ${OBJS}

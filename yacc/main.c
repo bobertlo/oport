@@ -38,8 +38,11 @@
 #include <paths.h>
 #include <signal.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include "defs.h"
+
+char *__progname;
 
 char dflag;
 char lflag;
@@ -366,6 +369,7 @@ open_files(void)
 int
 main(int argc, char *argv[])
 {
+    __progname=argv[0];
     set_signals();
     getargs(argc, argv);
     open_files();
