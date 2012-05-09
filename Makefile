@@ -3,6 +3,7 @@ include config.mk
 SUBDIRS=libopenbsd\
 	libl\
 	liby\
+	yacc\
 	lex\
 	m4
 
