@@ -7,13 +7,8 @@ include ../config.mk
 
 PROG=	m4
 CFLAGS+=-DEXTENDED -I.
-CDIAGFLAGS=-W -Wall -Wstrict-prototypes -pedantic \
-	-Wno-unused -Wno-char-subscripts -Wno-sign-compare
 
 LDFLAGS += -ly -ll -L../libl -L../liby
-
-LDADD= -ly -ll
-DPADD= ${LIBY} ${LIBL}
 
 SRCS=	eval.c expr.c look.c main.c misc.c gnum4.c trace.c tokenizer.c parser.c
 MAN=	m4.1

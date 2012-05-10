@@ -4,8 +4,6 @@
 include ../config.mk
 
 LIB=	libl.a
-WANTLINT=
 SRCS=	../lex/libmain.c ../lex/libyywrap.c
-NOPIC=
 
 include ../lib.mk

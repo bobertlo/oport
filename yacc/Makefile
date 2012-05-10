@@ -9,7 +9,5 @@ MAN=	yacc.1 yyfix.1
 
 include ../prog.mk
 
-beforeinstall:
-	${INSTALL} ${INSTALL_COPY} -o ${BINOWN} -g ${BINGRP} -m ${BINMODE} \
-	    ${.CURDIR}/yyfix.sh ${DESTDIR}${BINDIR}/yyfix
-
+install:
+	install -D -m 755 yyfix.sh ${DESTDIR}${BINDIR}/yyfix

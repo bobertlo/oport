@@ -14,19 +14,13 @@
 include ../config.mk
 
 PROG=	lex
-CFLAGS+=-I. -I.
+CFLAGS+=-I.
 SRCS=	ccl.c dfa.c ecs.c gen.c main.c misc.c nfa.c parse.c sym.c tblcmp.c \
 	yylex.c
 OBJS+=	scan.o skel.o
 CLEANFILES+=parse.c parse.h scan.c skel.c y.tab.c y.tab.h
-LDADD=	-ll
-DPADD=	${LIBL}
 
 MAN = flex.1
-
-LINKS=	${BINDIR}/lex ${BINDIR}/flex \
-	${BINDIR}/lex ${BINDIR}/flex++
-MLINKS=	flex.1 lex.1 flex.1 flex++.1
 
 include ../prog.mk
 
@@ -43,7 +37,9 @@ scan.c: scan.l
 
 scan.o: parse.c
 
-includes:
-	${INSTALL} ${INSTALL_COPY} -o ${BINOWN} -g ${BINGRP} -m 444 \
-		${.CURDIR}/FlexLexer.h ${DESTDIR}/usr/include/g++
-
+install:
+	test -e ${BINDIR}/flex || ln -s lex ${BINDIR}/flex 
+	test -e ${BINDIR}/flex++ || ln -s lex ${BINDIR}/flex++ 
+	ln -sf flex.1 ${MANDIR}/man1/lex.1
+	ln -sf flex.1 ${MANDIR}/man1/flex++.1
+	install -D -m 644 FlexLexer.h ${DESTDIR}${INCDIR}/g++/FlexLexer.h

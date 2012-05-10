@@ -13,5 +13,5 @@ all:
 clean:
 	for i in ${SUBDIRS}; do cd $$i; ${MAKE} clean || exit 1; cd ..; done
 
-install:
+install: all
 	for i in ${SUBDIRS}; do cd $$i; ${MAKE} install || exit 1; cd ..; done

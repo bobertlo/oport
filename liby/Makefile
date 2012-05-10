@@ -4,7 +4,5 @@ include ../config.mk
 
 LIB=	liby.a
 SRCS=	main.c yyerror.c
-NOPIC=	nopic
-WANTLINT=
 
 include ../lib.mk
