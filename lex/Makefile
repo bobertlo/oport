@@ -38,8 +38,8 @@ scan.c: scan.l
 scan.o: parse.c
 
 install:
-	test -e ${BINDIR}/flex || ln -s lex ${BINDIR}/flex 
-	test -e ${BINDIR}/flex++ || ln -s lex ${BINDIR}/flex++ 
-	ln -sf flex.1 ${MANDIR}/man1/lex.1
-	ln -sf flex.1 ${MANDIR}/man1/flex++.1
+	test -e ${DESTDIR}${BINDIR}/flex || ln -s lex ${DESTDIR}${BINDIR}/flex 
+	test -e ${DESTDIR}${BINDIR}/flex++ || ln -s lex ${DESTDIR}${BINDIR}/flex++ 
+	ln -sf flex.1 ${DESTDIR}${MANDIR}/man1/lex.1
+	ln -sf flex.1 ${DESTDIR}${MANDIR}/man1/flex++.1
 	install -D -m 644 FlexLexer.h ${DESTDIR}${INCDIR}/g++/FlexLexer.h
